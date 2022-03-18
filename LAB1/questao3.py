@@ -8,6 +8,6 @@ def sum_to(n):
       
       return s
 
-s = sum_to(100)
+s = sum_to(10)
 print("A soma é:")
 print(s)

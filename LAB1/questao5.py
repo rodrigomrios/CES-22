@@ -11,3 +11,4 @@ def is_palindrome(s):
     return False
 
 print(is_palindrome('arara'))
+print(is_palindrome('palindromo'))

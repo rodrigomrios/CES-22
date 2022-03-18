@@ -2,6 +2,8 @@ import turtle
 
 def draw_poly(t, n, sz):
     
+    t.pencolor("#ff007f")
+    
     for i in range(n):
         t.forward(sz)
         t.left(360/n)

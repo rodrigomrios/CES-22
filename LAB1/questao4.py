@@ -21,4 +21,5 @@ def is_prime(n):
       return False
 
 
-print(is_prime(458))
+print(is_prime(997))
+print(is_prime(609))
