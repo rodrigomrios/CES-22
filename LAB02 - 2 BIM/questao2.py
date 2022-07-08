@@ -75,27 +75,6 @@ class Livraria:
         
         return print('This client in not available')
 
-    def insertpurchase(self, client, purchase):
-
-        client.purchases.append(purchase)
-
-    def switchpurchase(self, client, old, new):
-
-        client.purchases.remove(old)
-        client.purchase.append(new)
-
-    def searchpurchase(self, client, purchase):
-
-        if purchase in client.purchases:
-
-            return print('Purchase data are:', purchase.book, purchase.id, purchase.price)
-
-        return('This purchase is not available')
-
-    def removepurchase(self, client, purchase):
-
-        client.purchases.remove(purchase)
-
 class Book:
 
     def __init__(self, title, author, genre, edition, publicompany, pricesell, pricebuy):
@@ -145,6 +124,27 @@ class Client:
         self.nome = name
         self.email = email
         self.purchases = []
+
+    def insertpurchase(self, purchase):
+
+        self.purchases.append(purchase)
+
+    def switchpurchase(self, old, new):
+
+        self.purchases.remove(old)
+        self.purchases.append(new)
+
+    def searchpurchase(self, purchase):
+
+        if purchase in self.purchases:
+
+            return print('Purchase data are:', purchase.book, purchase.id, purchase.price)
+
+        return('This purchase is not available')
+
+    def removepurchase(self, purchase):
+
+        self.purchases.remove(purchase)    
         
 class Purchase:
 
@@ -202,3 +202,14 @@ class Donut:
         self.id = id
         self.tax = tax
         self.price = self.pricesell * (1 + self.tax)
+
+L1 = Livraria()
+A1 = Author('Jusara', 'juju@gmail.com')
+G1 = Genre('Romance', 1.25)
+C1 = Client('Mariana', 'mariana@gmail.com')
+B1 = Book('Forever Alice', A1, G1, 1, 'Transcendant', 35.9, 30.1)
+P1 = Purchase(B1, 123456789)
+C1.insertpurchase(P1)
+L1.insertauthors(A1)
+L1.insertbook(B1)
+L1.insertclient(C1)
