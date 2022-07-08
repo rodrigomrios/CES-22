@@ -82,7 +82,7 @@ class Book:
         self.title = title
         self.author = author
         self.genre = genre
-        self.etion = edition
+        self.edition = edition
         self.publicompany = publicompany
         self.pricesell = pricesell
         self.pricebuy = pricebuy
@@ -121,7 +121,7 @@ class Client:
 
     def __init__(self, name, email):
 
-        self.nome = name
+        self.name = name
         self.email = email
         self.purchases = []
 
@@ -181,7 +181,7 @@ class Cafeteria:
 
         return print('This item is not available')
 
-class Coffe:
+class Coffee:
 
     def __init__(self, name, flavor, pricesell, tax, id):
 
