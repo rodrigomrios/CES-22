@@ -96,110 +96,109 @@ class Livraria:
 
         client.purchases.remove(purchase)
 
-    class Book:
-        def __init__(self, title, author: Author, genre: Genre, edition, publicompany, pricesell, pricebuy):
+class Book:
 
-            self.title = title
-            self.author = author
-            self.genre = genre
-            self.etion = edition
-            self.publicompany = publicompany
-            self.pricesell = pricesell
-            self.pricebuy = pricebuy
-            self.taxgenrebuysell = self.genre.tax * (pricesell - pricebuy)
-            self.price = self.pricesell + self.taxgenrebuysell
+    def __init__(self, title, author, genre, edition, publicompany, pricesell, pricebuy):
 
-        class Author:
-            def __init__(self, name, email):
-                
-                self.name = name
-                self.email = email
-                self.titlespublished = []
-                self.titlesavailable = []
+        self.title = title
+        self.author = author
+        self.genre = genre
+        self.etion = edition
+        self.publicompany = publicompany
+        self.pricesell = pricesell
+        self.pricebuy = pricebuy
+        self.taxgenrebuysell = self.genre.tax * (pricesell - pricebuy)
+        self.price = self.pricesell + self.taxgenrebuysell
 
-            def insertpublished(self, title):
+class Author:
 
-                return self.titlespublished.append(title)
+    def __init__(self, name, email):
+        
+        self.name = name
+        self.email = email
+        self.titlespublished = []
+        self.titlesavailable = []
 
-            def insertavailable(self, title):
+    def insertpublished(self, title):
 
-                return self.titlesavailable.append(title)
+        return self.titlespublished.append(title)
 
-        class Genre:
+    def insertavailable(self, title):
 
-            def __init__(self, genre, tax):
+        return self.titlesavailable.append(title)
 
-                self.genre = genre
-                self.tax = tax
+class Genre:
 
-            def switchtax(self, newtax):
+    def __init__(self, genre, tax):
 
-                self.tax = newtax    
+        self.genre = genre
+        self.tax = tax
+
+    def switchtax(self, newtax):
+
+        self.tax = newtax    
     
-    class Client:
+class Client:
 
-        def __init__(self, name, email):
+    def __init__(self, name, email):
 
-            self.nome = name
-            self.email = email
-            self.purchases = []
+        self.nome = name
+        self.email = email
+        self.purchases = []
         
-        class Purchase:
+class Purchase:
 
-            def __init__(self, book: Book, id):
+    def __init__(self, book, id):
 
-                self.book = book
-                self.id = id
-                self.price = book.price
+        self.book = book
+        self.id = id
+        self.price = book.price
 
-    class Cafeteria:
+class Cafeteria:
 
-        def __init__(self):
+    def __init__(self):
 
-            self.itens = []
+        self.itens = []
 
-        class Coffe:
+    def insertitem(self, coffe):
 
-            def __init__(self, name, flavor, pricesell, tax, id):
+        self.itens.append(coffe)
 
-                self.name = name
-                self.flavor = flavor
-                self.pricesell = pricesell
-                self.tax = tax
-                self.id = id
-                self.price = self.pricesell * (1 + self.tax)
-        
-        class Donut:
+    def switchitem(self, old, new):
 
-            def __init__(self, name, flavor, pricesell, id, tax):
+        self.itens.remove(old)
+        self.itens.append(new)
 
-                self.name = name
-                self.flavor = flavor
-                self.pricesell = pricesell
-                self.id = id
-                self.tax = tax
-                self.price = self.pricesell * (1 + self.tax)
+    def removeitem(self, item):
 
+        self.itens.remove(item)
 
-        def insertitem(self, coffe):
+    def searchitem(self, item):
 
-            self.itens.append(coffe)
+        if item in self.itens:
 
-        def switchitem(self, old, new):
+            return print('Item data are:', item.name, item.flavor, item.id, item.price)
 
-            self.itens.remove(old)
-            self.itens.append(new)
+        return print('This item is not available')
 
-        def removeitem(self, item):
+class Coffe:
 
-            self.itens.remove(item)
+    def __init__(self, name, flavor, pricesell, tax, id):
 
-        def searchitem(self, item):
+        self.name = name
+        self.flavor = flavor
+        self.pricesell = pricesell
+        self.tax = tax
+        self.id = id
+        self.price = self.pricesell * (1 + self.tax)
 
-            if item in self.itens:
+class Donut:
 
-                return print('Item data are:', item.name, item.flavor, item.id, item.price)
+    def __init__(self, name, flavor, pricesell, id, tax):
 
-            return print('This item is not available')
-
-
+        self.name = name
+        self.flavor = flavor
+        self.pricesell = pricesell
+        self.id = id
+        self.tax = tax
+        self.price = self.pricesell * (1 + self.tax)
